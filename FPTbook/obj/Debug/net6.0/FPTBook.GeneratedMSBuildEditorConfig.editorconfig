@@ -192,8 +192,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRCb29rLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[d:/git/abc/FPTBOOK/FPTbook/Views/Home/CheckOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGVja091dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [d:/git/abc/FPTBOOK/FPTbook/Views/Home/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/git/abc/FPTBOOK/FPTbook/Views/Home/EmptyCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXB0eUNhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [d:/git/abc/FPTBOOK/FPTbook/Views/Home/Help.cshtml]

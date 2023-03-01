@@ -131,4 +131,32 @@ public class HomeController : Controller
         ViewData["newItem"] = newItem;
         return View();
     }
+
+    [Authorize(Roles = "Customer, StoreOwner, Admin")]
+    public async Task<IActionResult> CheckOut()
+    {
+        ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+        ViewData["uid"] = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var users = await _userManager.Users.Where(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier)).ToListAsync();
+        var userRolesViewModel = new List<UserRolesViewModel>();
+        foreach (BookUser user in users)
+        {
+            var thisViewModel = new UserRolesViewModel();
+            thisViewModel.UserId = user.Id;
+            thisViewModel.Name = user.Name;
+            thisViewModel.PhoneNumber = user.PhoneNumber;
+            thisViewModel.Address = user.Address;
+            userRolesViewModel.Add(thisViewModel);
+        }
+
+        if (cart != null)
+        {
+            ViewData["myItems"] = cart.Items;
+            return View(userRolesViewModel);
+        }
+        else
+        {
+            return View("EmptyCart");
+        }
+    }
 }

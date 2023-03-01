@@ -159,4 +159,35 @@ public class HomeController : Controller
             return View("EmptyCart");
         }
     }
+
+    [Authorize(Roles = "Customer, StoreOwner, Admin")]
+    public IActionResult PlaceOrder(decimal total, string fullname, string address, string phone, string cusid)
+    {
+        ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+        Order myOrder = new Order();
+        myOrder.OrderTime = DateTime.Now;
+        myOrder.Total = total;
+        myOrder.Fullname = fullname;
+        myOrder.Address = address;
+        myOrder.UserID = cusid;
+        myOrder.Phone = phone;
+        myOrder.State = "Delivering";
+        _context.Order.Add(myOrder);
+        _context.SaveChanges();//this generates the Id for Order
+
+        foreach (var item in cart.Items)
+        {
+            OrderItem myOrderItem = new OrderItem();
+            myOrderItem.BookID = item.ID;
+            myOrderItem.Quantity = item.Quantity;
+            myOrderItem.OrderID = myOrder.Id;//id of saved order above
+
+            _context.OrderItem.Add(myOrderItem);
+        }
+        _context.SaveChanges();
+        //empty shopping cart
+        cart = new ShoppingCart();
+        HttpContext.Session.SetObject("cart", cart);
+        return View();
+    }
 }

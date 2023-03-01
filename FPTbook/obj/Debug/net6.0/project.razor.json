@@ -18579,6 +18579,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Views\\Home\\PlaceOrder.cshtml",
+      "TargetPath": "Views\\Home\\PlaceOrder.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Views\\Home\\AddBook.cshtml",
       "TargetPath": "Views\\Home\\AddBook.cshtml",
       "FileKind": "mvc"

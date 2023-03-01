@@ -190,4 +190,14 @@ public class HomeController : Controller
         HttpContext.Session.SetObject("cart", cart);
         return View();
     }
+
+    [HttpPost]
+    public RedirectToActionResult EditOrder(int id, int quantity)
+    {
+        ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+        cart.EditItem(id, quantity);
+        HttpContext.Session.SetObject("cart", cart);
+
+        return RedirectToAction("CheckOut", "Home");
+    }
 }

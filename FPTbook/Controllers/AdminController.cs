@@ -39,6 +39,7 @@ public class AdminController : Controller
         }
 
      public IActionResult ManageUser()
+    
     {
         return View();
     }

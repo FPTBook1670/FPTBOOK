@@ -74,4 +74,42 @@ public class HomeController : Controller
     {
         return View();
     }
+
+     public async Task<IActionResult> Detail(int? id)
+    {
+        if (id == null || _context.Book == null)
+        {
+            return NotFound();
+        }
+
+        var book = await _context.Book
+            .Include(b => b.Category)
+            .Include(b => b.Author)
+            .Include(b => b.Publisher)
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (book == null)
+        {
+            return NotFound();
+        }
+
+        return View(book);
+    }
+
+    [Authorize(Roles = "Customer, StoreOwner, Admin")]
+    public IActionResult Cart()
+    {
+        return View();
+    }
+    [Authorize(Roles = "Customer, StoreOwner, Admin")]
+    public IActionResult Profile()
+    {
+        return View();
+    }
+
+    
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
 }

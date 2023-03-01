@@ -18499,6 +18499,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
       "FileKind": "mvc"

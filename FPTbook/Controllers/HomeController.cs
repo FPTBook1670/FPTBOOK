@@ -210,4 +210,23 @@ public class HomeController : Controller
 
         return RedirectToAction("CheckOut", "Home");
     }
+
+    [Authorize(Roles = "Customer, StoreOwner, Admin")]
+    public async Task<IActionResult> Record()
+    {
+        var userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        return _context.Order != null ?
+                    View(await _context.Order
+                    .Where(o => o.UserID == userID)
+                    .ToListAsync()) :
+                    Problem("Entity set 'FPTBookContext.Order'  is null.");
+    }
+
+    [Authorize(Roles = "Customer, StoreOwner, Admin")]
+    public async Task<IActionResult> OrderDetail(int id)
+    {
+        var fPTBookContext = _context.OrderItem.Where(e => e.Order.Id == id).Include(b => b.Book).Include(o => o.Order).Include(c => c.Book.Author);
+        return View(await fPTBookContext.ToListAsync());
+    }
 }

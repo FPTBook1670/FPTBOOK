@@ -18499,6 +18499,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Views\\Home\\Record.cshtml",
+      "TargetPath": "Views\\Home\\Record.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Areas\\Identity\\Pages\\Account\\Lockout.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Lockout.cshtml",
       "FileKind": "mvc"
@@ -18676,6 +18681,11 @@
     {
       "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Views\\Home\\Help.cshtml",
       "TargetPath": "Views\\Home\\Help.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Views\\Home\\OrderDetail.cshtml",
+      "TargetPath": "Views\\Home\\OrderDetail.cshtml",
       "FileKind": "mvc"
     },
     {

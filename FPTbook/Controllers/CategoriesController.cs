@@ -172,4 +172,9 @@ namespace FPTBook.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-}
+     private bool CategoryExists(int id)
+        {
+          return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+    }
+

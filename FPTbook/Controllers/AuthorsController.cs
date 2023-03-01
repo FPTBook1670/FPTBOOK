@@ -21,7 +21,12 @@ namespace FPTBook.Controllers
         {
             _context = context;
         }
-
-
     }
+
+    public async Task<IActionResult> Index()
+        {
+              return _context.Author != null ? 
+            View(await _context.Author.ToListAsync()) :
+            Problem("Entity set 'FPTBookContext.Author'  is null.");
+        }
 }

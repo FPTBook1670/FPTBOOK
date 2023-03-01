@@ -21,5 +21,14 @@ namespace FPTBook.Controllers
             _context = context;
         }
 
+         // GET: Categories
+        [Authorize(Roles = "StoreOwner, Admin")]
+        public async Task<IActionResult> Index()
+        {
+              return _context.Category != null ? 
+                          View(await _context.Category.ToListAsync()) :
+                          Problem("Entity set 'FPTBookContext.Category'  is null.");
+        }
+
     }
 }

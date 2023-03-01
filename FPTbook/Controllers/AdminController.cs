@@ -32,7 +32,11 @@ public class AdminController : Controller
             _context = context;
             hostEnvironment = environment;
         }
-        
+
+         public IActionResult Index()
+    {
+        return View();
+    }
 
 
    

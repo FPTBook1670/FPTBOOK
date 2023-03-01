@@ -74,4 +74,61 @@ public class HomeController : Controller
     {
         return View();
     }
+
+     public async Task<IActionResult> Detail(int? id)
+    {
+        if (id == null || _context.Book == null)
+        {
+            return NotFound();
+        }
+
+        var book = await _context.Book
+            .Include(b => b.Category)
+            .Include(b => b.Author)
+            .Include(b => b.Publisher)
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (book == null)
+        {
+            return NotFound();
+        }
+
+        return View(book);
+    }
+
+    [Authorize(Roles = "Customer, StoreOwner, Admin")]
+    public IActionResult Cart()
+    {
+        return View();
+    }
+    [Authorize(Roles = "Customer, StoreOwner, Admin")]
+    public IActionResult Profile()
+    {
+        return View();
+    }
+
+    
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    [Authorize(Roles = "Customer, StoreOwner, Admin")]
+    [HttpPost]
+    public IActionResult AddBook(int id, string name, string poster, string author, decimal price, int quantity)
+    {
+        ShoppingCart myCart;
+        // If the cart is not in the session, create one and put it there
+        // Otherwise, get it from the session
+        if (HttpContext.Session.GetObject<ShoppingCart>("cart") == null)
+        {
+            myCart = new ShoppingCart();
+            HttpContext.Session.SetObject("cart", myCart);
+        }
+        myCart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+        var newItem = myCart.AddItem(id, name, poster, author, price, quantity);
+        HttpContext.Session.SetObject("cart", myCart);
+        ViewData["newItem"] = newItem;
+        return View();
+    }
 }

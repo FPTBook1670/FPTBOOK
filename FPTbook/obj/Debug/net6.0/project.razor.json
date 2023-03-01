@@ -18739,6 +18739,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "f:\\ASM_FPTbook\\FPTBOOK\\FPTbook\\Views\\Categories\\Edit.cshtml",
+      "TargetPath": "Views\\Categories\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "f:\\ASM_FPTbook\\FPTBOOK\\FPTbook\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
       "FileKind": "mvc"

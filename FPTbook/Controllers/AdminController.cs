@@ -33,11 +33,15 @@ public class AdminController : Controller
             hostEnvironment = environment;
         }
 
-         public IActionResult Index()
+    public IActionResult Index()
+        {
+            return View();
+        }
+
+     public IActionResult ManageUser()
     {
         return View();
     }
-
 
    
 

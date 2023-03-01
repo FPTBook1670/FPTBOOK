@@ -33,6 +33,54 @@ public class AdminController : Controller
             hostEnvironment = environment;
         }
 
+    public IActionResult Index()
+        {
+            return View();
+        }
+
+     public IActionResult ManageUser()
+    
+    {
+        return View();
+    }
+     public IActionResult ManageCategory()
+    {
+        return View();
+    }
+
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+     public IActionResult ReportDemo()
+        {
+            var data = _context.OrderItem.Include(s => s.Book)
+                        .GroupBy(s => s.Book.Title)
+                        .Select(g => new { Title = g.Key, Total = g.Sum(s => s.Quantity*s.Book.Price), TotalQuantity= g.Sum(s => s.Quantity)})
+                        .ToList();
+
+            string[] labels = new string[data.Count];
+            string[] totalquantity = new string[data.Count];
+            string[] totals = new string[data.Count];
+
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                labels[i] = data[i].Title;
+                totalquantity[i] = data[i].TotalQuantity.ToString();
+                totals[i] = data[i].Total.ToString();
+
+            }
+
+            ViewData["labels"] = string.Format("'{0}'", String.Join("','", labels));
+            ViewData["totalquantity"] = String.Join(",", totalquantity);
+            ViewData["totals"] = String.Join(",", totals);
+
+            return View(data);
+        }
 
    
 

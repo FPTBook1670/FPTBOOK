@@ -43,6 +43,10 @@ public class AdminController : Controller
     {
         return View();
     }
+     public IActionResult ManageCategory()
+    {
+        return View();
+    }
 
    
 

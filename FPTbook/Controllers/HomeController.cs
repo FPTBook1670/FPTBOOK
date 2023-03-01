@@ -57,5 +57,14 @@ public class HomeController : Controller
 
         return View(await fPTBookContext.ToListAsync());
     }
+
+    public IActionResult Help()
+    {
+        return View();
+    }
+    public IActionResult About()
+    {
+        return View();
+    }
    
 }

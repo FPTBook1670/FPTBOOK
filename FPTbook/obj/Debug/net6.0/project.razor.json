@@ -18589,6 +18589,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "f:\\ASM_FPTbook\\FPTBOOK\\FPTbook\\Views\\Categories\\Delete.cshtml",
+      "TargetPath": "Views\\Categories\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "f:\\ASM_FPTbook\\FPTBOOK\\FPTbook\\Views\\Home\\Help.cshtml",
       "TargetPath": "Views\\Home\\Help.cshtml",
       "FileKind": "mvc"

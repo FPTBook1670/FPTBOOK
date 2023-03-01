@@ -200,4 +200,14 @@ public class HomeController : Controller
 
         return RedirectToAction("CheckOut", "Home");
     }
+
+    [HttpPost]
+    public RedirectToActionResult RemoveOrderItem(int id)
+    {
+        ShoppingCart cart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+        cart.RemoveItem(id);
+        HttpContext.Session.SetObject("cart", cart);
+
+        return RedirectToAction("CheckOut", "Home");
+    }
 }

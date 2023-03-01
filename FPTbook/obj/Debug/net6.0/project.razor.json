@@ -18384,6 +18384,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Views\\Home\\Register.cshtml",
+      "TargetPath": "Views\\Home\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -18661,6 +18666,11 @@
     {
       "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Areas\\Identity\\Pages\\Account\\ForgotPasswordConfirmation.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\ForgotPasswordConfirmation.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\git\\abc\\FPTBOOK\\FPTbook\\Views\\Home\\Login.cshtml",
+      "TargetPath": "Views\\Home\\Login.cshtml",
       "FileKind": "mvc"
     }
   ],

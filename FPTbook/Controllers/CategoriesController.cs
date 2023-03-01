@@ -36,5 +36,24 @@ namespace FPTBook.Controllers
               return View(await _context.Category.ToListAsync());
         }
 
+         // GET: Categories/Details/5
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Category == null)
+            {
+                return NotFound();
+            }
+
+            var category = await _context.Category
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return View(category);
+        }
+
     }
 }

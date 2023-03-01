@@ -18539,6 +18539,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "f:\\ASM_FPTbook\\FPTBOOK\\FPTbook\\Views\\Categories\\Details.cshtml",
+      "TargetPath": "Views\\Categories\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "f:\\ASM_FPTbook\\FPTBOOK\\FPTbook\\Views\\Shared\\_MyLayout.cshtml",
       "TargetPath": "Views\\Shared\\_MyLayout.cshtml",
       "FileKind": "mvc"

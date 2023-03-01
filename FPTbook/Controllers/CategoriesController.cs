@@ -30,5 +30,11 @@ namespace FPTBook.Controllers
                           Problem("Entity set 'FPTBookContext.Category'  is null.");
         }
 
+        [Authorize(Roles = "StoreOwner, Admin")]
+        public async Task<IActionResult> RequestCategory()
+        {
+              return View(await _context.Category.ToListAsync());
+        }
+
     }
 }

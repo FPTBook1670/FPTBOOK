@@ -65,5 +65,14 @@ namespace FPTBook.Controllers
 
             return View(book);
         }
+
+        // GET: Books/Create
+        public IActionResult Create()
+        {
+            ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name");
+            ViewData["CategoryID"] = new SelectList(_context.Category.Where(m => m.Status == "Approve"), "Id", "Name");
+            ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name");
+            return View();
+        }
     }
 }

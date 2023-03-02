@@ -21,7 +21,13 @@ namespace FPTBook.Controllers
         {
             _context = context;
         }
-
-        
     }
+
+    // GET: Publishers
+        public async Task<IActionResult> Index()
+        {
+              return _context.Publisher != null ? 
+                          View(await _context.Publisher.ToListAsync()) :
+                          Problem("Entity set 'FPTBookContext.Publisher'  is null.");
+        }
 }

@@ -45,10 +45,11 @@ public class HomeController : Controller
     {
         // var fPTBookContext = _context.Book.Include(b => b.Category);
         // return View(await fPTBookContext.ToListAsync());
-        var fPTBookContext = from m in _context.Book.Include(a => a.Category)
-                                                    .Include(b => b.Author)
-                                                    .Include(c => c.Publisher)
-                             select m;
+        var fPTBookContext = from m in _context.Book
+        .Include(a => a.Category)                                               
+        .Include(b => b.Author)
+        .Include(c => c.Publisher)
+         select m;
 
         if (!String.IsNullOrEmpty(searchString))
         {

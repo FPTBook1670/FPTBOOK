@@ -25,4 +25,21 @@ namespace FPTBook.Controllers
         }
        
     }
+    public async Task<IActionResult> Index()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            var userRolesViewModel = new List<UserRolesViewModel>();
+            foreach (BookUser user in users)
+            {
+                var thisViewModel = new UserRolesViewModel();
+                thisViewModel.UserId = user.Id;
+                thisViewModel.Email = user.Email;
+                thisViewModel.Name = user.Name;
+                thisViewModel.DOB = user.DOB;
+                thisViewModel.Address = user.Address;
+                thisViewModel.Roles = await GetUserRoles(user);
+                userRolesViewModel.Add(thisViewModel);
+            }
+            return View(userRolesViewModel);
+        }
 }

@@ -22,6 +22,17 @@ namespace FPTBook.Controllers
             _context = context;
         }
 
+         public async Task<IActionResult> Index()
+        {
+              return _context.Order != null ? 
+                          View(await _context.Order.ToListAsync()) :
+                          Problem("Entity set 'FPTBookContext.Order'  is null.");
+        }
+
+        
+
+
+
 
     }
 }

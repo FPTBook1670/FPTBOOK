@@ -17,5 +17,8 @@ public class StoreOwnerController : Controller
         _logger = logger;
     }
 
-    
+    public IActionResult Index()
+    {
+        return View();
+    }
 }

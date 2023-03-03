@@ -26,8 +26,18 @@ public class StoreOwnerController : Controller
     {
         return View();
     }
-    
+
     public IActionResult ManageAuthor()
+    {
+        return View();
+    }
+
+    public IActionResult ManagePublisher()
+    {
+        return View();
+    }
+    
+    public IActionResult RequestCategory()
     {
         return View();
     }

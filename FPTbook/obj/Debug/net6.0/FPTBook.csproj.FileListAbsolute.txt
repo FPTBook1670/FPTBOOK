@@ -1222,3 +1222,15 @@ D:\git\abc\FPTBOOK\FPTbook\obj\Debug\net6.0\refint\FPTBook.dll
 D:\git\abc\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.pdb
 D:\git\abc\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.genruntimeconfig.cache
 D:\git\abc\FPTBOOK\FPTbook\obj\Debug\net6.0\ref\FPTBook.dll
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.csproj.AssemblyReference.cache
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.GeneratedMSBuildEditorConfig.editorconfig
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.AssemblyInfoInputs.cache
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.AssemblyInfo.cs
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.csproj.CoreCompileInputs.cache
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.MvcApplicationPartsAssemblyInfo.cs
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.MvcApplicationPartsAssemblyInfo.cache
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.RazorAssemblyInfo.cache
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.RazorAssemblyInfo.cs
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.dll
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\refint\FPTBook.dll
+F:\ASM_FPTbook\FPTBOOK\FPTbook\obj\Debug\net6.0\FPTBook.pdb

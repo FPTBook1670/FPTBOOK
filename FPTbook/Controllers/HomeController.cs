@@ -179,6 +179,7 @@ public class HomeController : Controller
         HttpContext.Session.SetObject("cart", cart);
         return View();
     }
+        
     [HttpPost]
     public RedirectToActionResult EditOrder(int id, int quantity)
     {

@@ -108,20 +108,24 @@ public class HomeController : Controller
     [HttpPost]
     public RedirectToActionResult AddBook(int id, string name, string poster, string author, decimal price, int quantity)
     {
-        ShoppingCart myCart;
-        // If the cart is not in the session, create one and put it there
-        // Otherwise, get it from the session
-        if (HttpContext.Session.GetObject<ShoppingCart>("cart") == null)
-        {
-            myCart = new ShoppingCart();
+            ShoppingCart myCart;
+            // If the cart is not in the session, create one and put it there
+            // Otherwise, get it from the session
+            if (HttpContext.Session.GetObject<ShoppingCart>("cart") == null)
+            {
+                myCart = new ShoppingCart();
+                HttpContext.Session.SetObject("cart", myCart);
+            }
+            myCart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
+            var newItem = myCart.AddItem(id, name, poster, author, price, quantity);
             HttpContext.Session.SetObject("cart", myCart);
-        }
-        myCart = (ShoppingCart)HttpContext.Session.GetObject<ShoppingCart>("cart");
-        var newItem = myCart.AddItem(id, name, poster, author, price, quantity);
-        HttpContext.Session.SetObject("cart", myCart);
-        ViewData["newItem"] = newItem;
-        return RedirectToAction("Index", "Home");
+            return RedirectToAction("CheckOut", "Home");   
     }
+
+     [HttpGet]
+     public RedirectToActionResult AddBook(){
+            return RedirectToAction("Index", "Home");
+     }
 
     [Authorize(Roles = "Customer, StoreOwner, Admin")]
     public async Task<IActionResult> CheckOut()
@@ -140,9 +144,16 @@ public class HomeController : Controller
             userRolesViewModel.Add(thisViewModel);
         }
         
-        ViewData["myItems"] = cart.Items;
-        return View(userRolesViewModel);
-    }
+        try
+        {
+            ViewData["myItems"] = cart.Items;
+            return View(userRolesViewModel);
+        }
+        catch (System.Exception)
+        {  
+            return View("EmptyCart");     
+        }
+    }    
 
     [Authorize(Roles = "Customer, StoreOwner, Admin")]
     public async Task<IActionResult> PlaceOrderAsync(decimal total, string fullname, string address, string phone, string cusid, int quantity)
@@ -163,14 +174,19 @@ public class HomeController : Controller
 
         foreach (var item in cart.Items)
         {
+            var bookDb = _context.Book.Find(item.ID);
+            bookDb.Quantity = bookDb.Quantity - item.Quantity;
+            if(bookDb.Quantity < 0){
+                return View("ErrorQuantity");
+            }
+            else{
+            _context.Update(bookDb);
             OrderItem myOrderItem = new OrderItem();
             myOrderItem.BookID = item.ID;
             myOrderItem.Quantity = item.Quantity;
             myOrderItem.OrderID = myOrder.Id;//id of saved order above
-            var bookDb = _context.Book.Find(item.ID);
-            bookDb.Quantity = bookDb.Quantity - item.Quantity;
-            _context.Update(bookDb);
             _context.OrderItem.Add(myOrderItem);
+            }
         }
         _context.SaveChanges();
 
@@ -179,7 +195,6 @@ public class HomeController : Controller
         HttpContext.Session.SetObject("cart", cart);
         return View();
     }
-        
     [HttpPost]
     public RedirectToActionResult EditOrder(int id, int quantity)
     {

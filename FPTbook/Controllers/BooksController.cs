@@ -84,20 +84,30 @@ namespace FPTBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                string filename = Path.GetFileName(myfile.FileName);
-                var filePath = Path.Combine(hostEnvironment.WebRootPath, "uploads");
-                string fullPath = filePath + "\\" + filename;
-                using (var stream = new FileStream(fullPath, FileMode.Create))
-                {
-                    await myfile.CopyToAsync(stream);
-                }
-                book.Poster = filename;
-                _context.Add(book);
-                if(_context.Book.Where(a => a.Title == Title).ToList().Count != 0){
-                     return View(book);
-                }
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if(myfile.Length > 0){
+                    string filename = Path.GetFileName(myfile.FileName);
+                    string fileType = Path.GetExtension(myfile.FileName).ToLower().Trim();
+                    if(fileType != ".jpg" && fileType != ".png"){
+                        TempData["Mess"] = "File format not supported. Ony file JPG and PNG";
+                        ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
+                        ViewData["CategoryID"] = new SelectList(_context.Category.Where(m => m.Status == "Approve"), "Id", "Name", book.CategoryID);
+                        ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
+                        return View(book);
+                    }
+                    var filePath = Path.Combine(hostEnvironment.WebRootPath, "uploads");
+                    string fullPath = filePath + "\\" + filename;
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        await myfile.CopyToAsync(stream);
+                    }
+                    book.Poster = filename;
+                    _context.Add(book);
+                    if(_context.Book.Where(a => a.Title == Title).ToList().Count != 0){
+                        return View(book);
+                    }
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }  
             }
             ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
             ViewData["CategoryID"] = new SelectList(_context.Category.Where(m => m.Status == "Approve"), "Id", "Name", book.CategoryID);
@@ -214,7 +224,5 @@ namespace FPTBook.Controllers
         {
             return (_context.Book?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-
-        
     }
 }

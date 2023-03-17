@@ -107,6 +107,9 @@
                                         @foreach (var user in Model)
                                         {
                                             <h3 class="mb-4">Payment</h3>
+                                            <div class="container" style="text-align: right;">
+                                                <a asp-area="Identity" asp-page="/Account/Manage/Index">Edit profile</a>
+                                            </div>
                                             <form asp-action="PlaceOrder" method="post">
                                                 <div class="form-outline mb-4" hidden>
                                                     <label class="form-label" for="cusid"><strong>CusID</strong></label>

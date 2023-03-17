@@ -37,7 +37,11 @@
                     <div class="form-check m-1">
                         <input type="hidden" asp-for="@Model[i].RoleId" />
                         <input type="hidden" asp-for="@Model[i].RoleName" />
+<<<<<<< HEAD
                         <input asp-for="@Model[i].Selected" class="form-check-input" /             >
+=======
+                        <input class="form-check-input" type="radio" asp-for="@Model[i].Selected" />
+>>>>>>> 7211727f4d71d455a911462cbaec3c761a739b28
                         <label class="form-check-label" asp-for="@Model[i].Selected">
                             @Model[i].RoleName
                         </label>

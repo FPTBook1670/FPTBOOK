@@ -32,7 +32,5 @@ namespace FPTBook.Controllers
             }
             return RedirectToAction("Index");
         }
-
-        
     }
 }

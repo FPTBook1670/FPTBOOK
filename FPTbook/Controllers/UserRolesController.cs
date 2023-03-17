@@ -23,6 +23,7 @@ namespace FPTBook.Controllers
             _roleManager = roleManager;
             _userManager = userManager;
         }
+        
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
@@ -80,11 +81,12 @@ namespace FPTBook.Controllers
             }
             var roles = await _userManager.GetRolesAsync(user);
             var result = await _userManager.RemoveFromRolesAsync(user, roles);
-            if (!result.Succeeded)
-            {
-                ModelState.AddModelError("", "Cannot remove user existing roles");
-                return View(model);
-            }
+            // if (!result.Succeeded)
+            // {
+            //     ModelState.AddModelError("", "Cannot remove user existing roles");
+            //     return View(model);
+            // }
+
             result = await _userManager.AddToRolesAsync(user, model.Where(x => x.Selected).Select(y => y.RoleName));
             if (!result.Succeeded)
             {

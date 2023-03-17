@@ -12,8 +12,6 @@
 
             <li class=""><a href="/Categories/Index"><em class="fa fa-dashboard">&nbsp;</em> Manage Category</a></li>
 
-            <li class=""><a href="/Admin/ReportDemo"><em class="fa fa-dashboard">&nbsp;</em> Report</a></li>
-            <br><br><br><br><br><br><br><br>
 
             <li class="nav-item">
                 <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
@@ -31,6 +29,7 @@
                 <h2>Manage User Roles</h2>
                 Add/Remove Roles for User / @ViewBag.UserName.
             </div>
+            <a>Bat buoc phai chon mot trong bar</a>
             <hr>
             <div class="card-body">
                 @for (int i = 0; i < Model.Count; i++)
@@ -38,7 +37,7 @@
                     <div class="form-check m-1">
                         <input type="hidden" asp-for="@Model[i].RoleId" />
                         <input type="hidden" asp-for="@Model[i].RoleName" />
-                        <input asp-for="@Model[i].Selected" class="form-check-input" />
+                        <input asp-for="@Model[i].Selected" class="form-check-input" /             >
                         <label class="form-check-label" asp-for="@Model[i].Selected">
                             @Model[i].RoleName
                         </label>

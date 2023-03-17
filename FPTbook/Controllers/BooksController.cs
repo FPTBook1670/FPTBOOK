@@ -94,6 +94,15 @@ namespace FPTBook.Controllers
                         ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
                         return View(book);
                     }
+                    
+                    int compare = DateTime.Compare(book.ReleaseDate, DateTime.Today);
+                    if(compare > 0){
+                        TempData["MessDate"] = "Can't choose a future date";
+                        ViewData["AuthorID"] = new SelectList(_context.Author, "Id", "Name", book.AuthorID);
+                        ViewData["CategoryID"] = new SelectList(_context.Category.Where(m => m.Status == "Approve"), "Id", "Name", book.CategoryID);
+                        ViewData["PublisherID"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherID);
+                        return View(book);
+                    }
                     var filePath = Path.Combine(hostEnvironment.WebRootPath, "uploads");
                     string fullPath = filePath + "\\" + filename;
                     using (var stream = new FileStream(fullPath, FileMode.Create))

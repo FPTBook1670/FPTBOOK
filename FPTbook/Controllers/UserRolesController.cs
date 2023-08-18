@@ -42,6 +42,7 @@ namespace FPTBook.Controllers
             return View(userRolesViewModel);
         }
         public async Task<IActionResult> Manage(string userId)
+        
         {
             ViewBag.userId = userId;
             var user = await _userManager.FindByIdAsync(userId);

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace FPTBook.Controllers
 {
      [Authorize(Roles = "Admin")]
+     
     public class RoleManagerController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -23,6 +24,7 @@ namespace FPTBook.Controllers
             var roles = await _roleManager.Roles.ToListAsync();
             return View(roles);
         }
+
         [HttpPost]
         public async Task<IActionResult> AddRole(string roleName)
         {

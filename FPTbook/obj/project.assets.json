@@ -11470,20 +11470,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\QK\\.nuget\\packages\\": {}
+    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Source_\\FPTbook\\FPTbook\\FPTBook.csproj",
+      "projectUniqueName": "F:\\ASM_FPTbook\\FPTBOOK\\FPTBook\\FPTBook.csproj",
       "projectName": "FPTBook",
-      "projectPath": "d:\\Source_\\FPTbook\\FPTbook\\FPTBook.csproj",
-      "packagesPath": "C:\\Users\\QK\\.nuget\\packages\\",
-      "outputPath": "d:\\Source_\\FPTbook\\FPTbook\\obj\\",
+      "projectPath": "F:\\ASM_FPTbook\\FPTBOOK\\FPTBook\\FPTBook.csproj",
+      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+      "outputPath": "F:\\ASM_FPTbook\\FPTBOOK\\FPTBook\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\QK\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
